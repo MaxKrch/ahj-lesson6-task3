@@ -1,8 +1,8 @@
-export default (page, files) => {
+export default (page) => {
 	const arrayLinks = searchLinks(page);
 	for (let link of arrayLinks) {
 		addEventListeners(link, "click", () => {
-			downloadFile(event, files, page);
+			downloadFile(event, page);
 		});
 	}
 };
@@ -22,8 +22,8 @@ const addEventListeners = (element, ev, callback) => {
 	});
 };
 
-const downloadFile = (event, files, page) => {
-	const size = countSize(event, files, page) / 1000000;
+const downloadFile = (event, page) => {
+	const size = countSize(event, page) / 1000000;
 	addDownloaded(size, page);
 };
 
@@ -35,9 +35,7 @@ const addDownloaded = (size, page) => {
 	wrapSize.textContent = newSize.toFixed(1);
 };
 
-const countSize = (event, files) => {
-	const id = Number(event.target.dataset.id);
-	const file = files.find((item) => item.id === id);
+const countSize = (event) => {
 	const data = event.target.href.split(',')[1]
 	const blob = createBlob(data);
 	const src = URL.createObjectURL(blob);
