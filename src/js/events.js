@@ -38,7 +38,7 @@ const addDownloaded = (size, page) => {
 const countSize = (event, files) => {
 	const id = Number(event.target.dataset.id);
 	const file = files.find((item) => item.id === id);
-	const data = event.target.href.split(','),[1]
+	const data = event.target.href.split(',')[1]
 	const blob = createBlob(data);
 	const src = URL.createObjectURL(blob);
 
