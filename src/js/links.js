@@ -1,12 +1,11 @@
-export default (page, blobs) => {
-	for (let file of blobs) {
+export default (page, files) => {
+	for (let file of files) {
 		const link = page.querySelector(`a[data-id="${file.id}"]`);
-		const src = URL.createObjectURL(file.blob);
+		const src = `data:application/pdf;base64,${file.data}`;
 
 		const wrapLink = link.closest("li.file__item");
 		const linkSize = wrapLink.querySelector(".file__size-count");
-		console.log(wrapLink, linkSize);
-		linkSize.textContent = (file.blob.size / 1000000).toFixed(1);
+		linkSize.textContent = file.size;
 
 		link.href = src;
 	}

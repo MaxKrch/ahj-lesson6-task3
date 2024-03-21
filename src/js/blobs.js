@@ -1,19 +1,12 @@
-export default (files) => {
-	const blobList = [];
+export default (file) => {
+	const decodingData = atob(file);
+	const array = [];
 
-	for (let file of files) {
-		const decodingData = atob(file.data);
-		const array = [];
-
-		for (let i = 0; i < decodingData.length; i++) {
-			array.push(decodingData.charCodeAt(i));
-		}
-
-		const blob = new Blob([new Uint8Array(array)], { type: "application/pdf" });
-		blobList.push({
-			id: file.id,
-			blob,
-		});
+	for (let i = 0; i < decodingData.length; i++) {
+		array.push(decodingData.charCodeAt(i));
 	}
-	return blobList;
+
+	const blob = new Blob([new Uint8Array(array)], { type: "application/pdf" });
+
+	return blob;
 };
