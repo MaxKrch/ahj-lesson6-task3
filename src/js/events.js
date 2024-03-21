@@ -32,7 +32,7 @@ const addDownloaded = (size, page) => {
 	const wrapSize = page.querySelector(".span__number");
 
 	const newSize = +wrapSize.textContent + +fixedSize;
-	wrapSize.textContent = +newSize;
+	wrapSize.textContent = newSize.toFixed(1);
 };
 
 const countSize = (event, files) => {
@@ -46,7 +46,7 @@ const countSize = (event, files) => {
 	a.href = src;
 	setTimeout(() => {
 		URL.revokeObjectURL(a.href);
-	}, 3000);
+	}, 1000);
 
 	a.dispatchEvent(new MouseEvent("click"));
 	return blob.size;
