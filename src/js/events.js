@@ -42,7 +42,7 @@ const countSize = (event) => {
 
 	const a = document.createElement("a");
 	const file = event.target.closest('li');
-	const name = file.querySelection('.file__name').textContent;
+	const name = file.querySelector('.file__name').textContent;
 	
 	a.download = name;
 	a.href = src;
