@@ -62,7 +62,7 @@ const renderFile = (id, name) => {
 		</div>
 		
 		<span class="file__item file__link">
-			<a class="file__link-a" href='' download="${name}" rel="noopener" data-id="${id}">
+			<a class="file__link-a" href='' data-id="${id}">
 				Download
 			</a>
 		</span>
