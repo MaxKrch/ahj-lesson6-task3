@@ -32,17 +32,21 @@ const addDownloaded = (size, page) => {
 
 const countSize = (event, blobs) => {
 	return new Promise((resolve, reject) => {
-		const reader = new FileReader();
 
-		reader.onload = (event) => {
-			resolve(event.loaded / 1000000);
-		};
-		reader.onerror = () => {
-			reject(0);
-		};
+		setTimeout(() => { 
 
-		const blob = requestBlob(Number(event.target.dataset.id), blobs);
-		reader.readAsArrayBuffer(blob);
+			const reader = new FileReader();
+
+			reader.onload = (event) => {
+				resolve(event.loaded / 1000000);
+			};
+			reader.onerror = () => {
+				reject(0);
+			};
+
+			const blob = requestBlob(Number(event.target.dataset.id), blobs);
+			reader.readAsArrayBuffer(blob);
+		}, 1000)
 	});
 };
 
