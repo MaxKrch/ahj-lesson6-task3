@@ -42,7 +42,7 @@ const countSize = (event, files) => {
 	const src = URL.createObjectURL(blob);
 
 	const a = document.createElement("a");
-	a.download = "test";
+	a.download = file.name;
 	a.href = src;
 	setTimeout(() => {
 		URL.revokeObjectURL(a.href);
