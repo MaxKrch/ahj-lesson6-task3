@@ -31,4 +31,4 @@ const arrayFiles = [
 const page = rendingPage("#app", arrayFiles);
 
 addBlobsToLinks(page, arrayFiles);
-addEventListeners(page, arrayFiles);
+addEventListeners(page);
