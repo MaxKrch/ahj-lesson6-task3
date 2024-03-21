@@ -41,7 +41,10 @@ const countSize = (event) => {
 	const src = URL.createObjectURL(blob);
 
 	const a = document.createElement("a");
-	a.download = file.name;
+	const file = event.target.closest('li');
+	const name = file.querySelection('.file__name').textContent;
+	
+	a.download = name;
 	a.href = src;
 	setTimeout(() => {
 		URL.revokeObjectURL(a.href);
